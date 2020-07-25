@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from users.views import PostResumen, LikeTotal
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('comment/', PostResumen.as_view()),
+    path('like/', LikeTotal.as_view()),
 ]
