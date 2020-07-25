@@ -6,7 +6,7 @@ from .users import User
 from .posts import Post
 
 
-class Like(model.Model):
+class Like(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -14,6 +14,13 @@ class Like(model.Model):
 
     like = models.BooleanField(default=True)
 
+    class Meta:
+        # que solo pueda existir un like al mismo post del mismo user
+        unique_together = ('user', 'post')
+
     def __str__(self):
-        """Return post str representation."""
-        return str(self.user + self.post + str(self.like))
+        return str(
+            self.user.username +
+            "--DIO--"+str(self.like) +
+            "--al--" + self.post.description
+        )

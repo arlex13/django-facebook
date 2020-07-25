@@ -21,12 +21,12 @@ class User(AbstractUser):
         help_text=('The number must have 8 digits')
     )
 
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     is_verified = models.BooleanField(
         'verified',
         default=True,
-        help_text='Set to true when the user have verified its email address.
+        help_text='Set to true when the user have verified its email address'
     )
 
     def __str__(self):

@@ -5,7 +5,7 @@ from django.db import models
 from .users import User
 
 
-class Post(model.Model):
+class Post(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -14,4 +14,4 @@ class Post(model.Model):
 
     def __str__(self):
         """Return post str representation."""
-        return str(self.user + self.content)
+        return str(self.user.username + "--PUBLICO--" + self.description)
