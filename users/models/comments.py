@@ -6,6 +6,9 @@ from django.db.models.signals import post_delete
 from .users import User
 from .posts import Post
 
+# Managers
+from users.managers import CommentManager
+
 
 class Comment(models.Model):
 
@@ -16,6 +19,8 @@ class Comment(models.Model):
     )
 
     content = models.CharField(max_length=255)
+
+    objects = CommentManager()
 
     def __str__(self):
         """Return Comment str representation."""
