@@ -1,5 +1,6 @@
 # Django
 from django.db import models
+from django.db.models.signals import post_delete
 
 # Models
 from .users import User
@@ -9,7 +10,10 @@ from .posts import Post
 class Comment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE,
+        related_name="post_comment"
+    )
 
     content = models.CharField(max_length=255)
 
@@ -20,3 +24,16 @@ class Comment(models.Model):
             "--COMENTO--" + self.content +
             "--AL POST--" + self.post.description
         )
+
+    def save(self, *args, **kwargs):
+        self.post.total_comments = self.post.total_comments + 1
+        self.post.save()
+        super(Comment, self).save(*args, **kwargs)
+
+
+def remove_comment(sender, instance, **kwargs):
+    instance.post.total_comments = instance.post.total_comments - 1
+    instance.post.save()
+
+
+post_delete.connect(remove_comment, sender=Comment)
