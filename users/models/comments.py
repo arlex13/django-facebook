@@ -13,10 +13,7 @@ from users.managers import CommentManager
 class Comment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(
-        Post, on_delete=models.CASCADE,
-        related_name="post_comment"
-    )
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     content = models.CharField(max_length=255)
 

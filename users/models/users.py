@@ -5,6 +5,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+# Managers
+from users.managers import UserManager
+
+
 class User(AbstractUser):
 
     email = models.EmailField(
@@ -29,6 +33,8 @@ class User(AbstractUser):
         help_text='Set to true when the user have verified its email address'
     )
 
+    objects = UserManager()
+
     def __str__(self):
         """Return username."""
-        return self.username
+        return str(str(self.id) + " "+self.username)
