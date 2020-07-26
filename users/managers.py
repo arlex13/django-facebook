@@ -15,8 +15,14 @@ class CommentManager(models.Manager):
 
 
 class PostManager(models.Manager):
-    def AunNoUsado(self):
-        return []
+    def list_Posts(self, id_user):
+        result = self.filter(
+            user__id=id_user
+        )
+        for r in result:
+            print(r)
+
+        return result
 
 
 class UserManager(models.Manager):
