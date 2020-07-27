@@ -2,24 +2,16 @@
 from rest_framework.generics import ListAPIView
 
 
-# models
-from users.models.posts import Post
-from users.models.users import User
+# # models
+# from users.models.posts import Post
+# from users.models.users import User
 
-# serializer
-from users.serializers.post import PostListSerializer
-from users.serializers.user import AvgPostsSerializer
-
-
-class MyPostsApiView(ListAPIView):
-    serializer_class = PostListSerializer
-
-    def get_queryset(self):
-        return Post.objects.filter(user_id=1)
+# # serializer
+# from users.serializers import post
+# from users.serializers import user
 
 
-class MyAvgPostsApiView(ListAPIView):
-    serializer_class = AvgPostsSerializer
+# ______________  private ______________
 
-    def get_queryset(self):
-        return User.objects.average_comments_likes(1)
+
+# ______________  public  ______________

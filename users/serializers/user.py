@@ -1,8 +1,19 @@
 from rest_framework import serializers
 
-from users.models.posts import Post
+from users.models.users import User
 
 
-class AvgPostsSerializer(serializers.Serializer):
-    avg_comment = serializers.FloatField()
-    avg_like = serializers.FloatField()
+# ______________  private ______________
+
+
+# ______________  public  ______________
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'username'
+        )

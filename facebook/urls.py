@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 # from users.views import PostResumen, LikeTotal
 from users.views2 import PostResumen, LikeTotal
-from users.views import users
+from users.views import posts
 
 
 urlpatterns = [
@@ -25,9 +25,13 @@ urlpatterns = [
     path('comment/', PostResumen.as_view()),
     path('like2/', LikeTotal.as_view()),
 
-    #   privado
-    path('my-posts/', users.MyPostsApiView.as_view()),
-    path('my-avg-posts/', users.MyAvgPostsApiView.as_view()),
+    #   private
+    path('my-posts/', posts.MyPostsApiView.as_view()),
+    path('my-avg-posts/', posts.MyAvgPostsApiView.as_view()),
+
+
+    #   public
+    path('posts/', posts.PostsApiView.as_view()),
 
 
 
