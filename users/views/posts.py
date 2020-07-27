@@ -1,5 +1,5 @@
 # rest framework
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 
 # models
 from users.models.posts import Post
@@ -35,3 +35,7 @@ class PostsApiView(ListAPIView):
 
     def get_queryset(self):
         return Post.objects.all()
+
+
+class PostsAddApiView(CreateAPIView):
+    serializer_class = post.PostAddSerializer

@@ -36,4 +36,13 @@ class PostSerializer(serializers.ModelSerializer):
             'description',
             'user'
         )
-        # fields = '__all__'
+
+
+class PostAddSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            'id',
+            'description',
+            'user'
+        )

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 # from users.views import PostResumen, LikeTotal
 from users.views2 import PostResumen, LikeTotal
-from users.views import posts, comments, likes
+from users.views import posts, comments, likes, users
 
 
 urlpatterns = [
@@ -33,10 +33,10 @@ urlpatterns = [
     #   public
     path('posts/', posts.PostsApiView.as_view()),
 
-    path('add-comment/', comments.CommentAddApiView.as_view()),
-
-    path('add-like/', likes.LikeAddApiView.as_view())
-
-
+    #   Add
+    path('comment-add/', comments.CommentAddApiView.as_view()),
+    path('like-add/', likes.LikeAddApiView.as_view()),
+    path('posts-add/', posts.PostsAddApiView.as_view()),
+    path('users-add/', users.UsersAddApiView.as_view()),
 
 ]
