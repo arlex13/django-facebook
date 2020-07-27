@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 # from users.views import PostResumen, LikeTotal
 from users.views2 import PostResumen, LikeTotal
-from users.views import posts
+from users.views import posts, comments, likes
 
 
 urlpatterns = [
@@ -32,6 +32,10 @@ urlpatterns = [
 
     #   public
     path('posts/', posts.PostsApiView.as_view()),
+
+    path('add-comment/', comments.CommentAddApiView.as_view()),
+
+    path('add-like/', likes.LikeAddApiView.as_view())
 
 
 
