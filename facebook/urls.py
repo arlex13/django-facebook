@@ -15,10 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from users.views import PostResumen, LikeTotal
+# from users.views import PostResumen, LikeTotal
+from users.views2 import PostResumen, LikeTotal
+from users.views import users
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('comment/', PostResumen.as_view()),
-    path('like/', LikeTotal.as_view()),
+    path('like2/', LikeTotal.as_view()),
+
+    #   privado
+    path('my-posts/', users.MyPostsApiView.as_view()),
+    path('my-avg-posts/', users.MyAvgPostsApiView.as_view()),
+
+
+
 ]

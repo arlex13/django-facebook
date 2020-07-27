@@ -34,5 +34,4 @@ class UserManager(models.Manager):
             avg_comment=Avg('user_post__total_comments'),
             avg_like=Avg('user_post__total_reactions')
         )
-        print(result)
-        return result
+        return [result]

@@ -1,21 +1,13 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic import (
-    ListView,
-    DetailView,
-    CreateView,
-    TemplateView,
-    UpdateView,
-    DeleteView
-)
+# django
+from django.views.generic import ListView
+# rest framework
+from rest_framework.generics import ListAPIView
+
 # models
 from .models.comments import Comment
-
 from .models.likes import Like
-
-from .models.likes import Post
-# # forms
-# from .forms import EmpleadoForm
+from .models.posts import Post
+from .models.users import User
 
 
 class PostResumen(ListView):
