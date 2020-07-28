@@ -1,9 +1,12 @@
 # rest framework
 from rest_framework.generics import ListAPIView, CreateAPIView
 
+from django.db.models import Count, Avg, Sum
+
 # models
 from users.models.posts import Post
-from users.models.users import User
+from django.contrib.auth.models import User
+# from users.models.users import User
 
 # serializer
 from users.serializers import post
@@ -24,10 +27,13 @@ class MyAvgPostsApiView(ListAPIView):
     serializer_class = post.AvgPostsSerializer
 
     def get_queryset(self):
-        return User.objects.average_comments_likes(1)
-
-
-# ______________  public  ______________
+        result = User.objects.filter(
+            id=1
+        ).aggregate(
+            avg_comment=Avg('user_post__total_comments'),
+            avg_like=Avg('user_post__total_reactions')
+        )
+        return [result]
 
 
 class PostsApiView(ListAPIView):

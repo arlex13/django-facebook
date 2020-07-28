@@ -2,7 +2,8 @@
 from django.db import models
 
 # Models
-from .users import User
+from django.contrib.auth.models import User
+# from .users import User
 
 # Managers
 from users.managers import PostManager

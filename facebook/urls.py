@@ -19,6 +19,6 @@ urlpatterns = [
     path('comment-add/', comments.CommentAddApiView.as_view()),
     path('like-add/', likes.LikeAddApiView.as_view()),
     path('posts-add/', posts.PostsAddApiView.as_view()),
-    path('users-add/', users.UsersAddApiView.as_view()),
+    # path('users-add/', users.UsersAddApiView.as_view()),
 
 ]

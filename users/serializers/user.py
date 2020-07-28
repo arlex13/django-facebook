@@ -1,12 +1,13 @@
 from rest_framework import serializers
 
-from users.models.users import User
+# from users.models.users import User
+from django.contrib.auth.models import User
 
 
-# ______________  private ______________
+# # ______________  private ______________
 
 
-# ______________  public  ______________
+# # ______________  public  ______________
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,17 +20,17 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
-class UserAddSerializer(serializers.ModelSerializer):
+# class UserAddSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = User
-        fields = (
-            'id',
-            'password',
-            'first_name',
-            'username',
-            'email',
-            'phone',
-        )
+#     class Meta:
+#         model = User
+#         fields = (
+#             'id',
+#             'password',
+#             'first_name',
+#             'username',
+#             'email',
+#             'phone',
+#         )
 
-        # fields = '__all__'
+#         # fields = '__all__'
