@@ -31,4 +31,5 @@ class UserAddSerializer(serializers.ModelSerializer):
             'email',
             'phone',
         )
+
         # fields = '__all__'
