@@ -8,9 +8,6 @@ class CommentManager(models.Manager):
         result = self.filter(
             post_id=id_post
         ).order_by('id')
-
-        for r in result:
-            print(r.content)
         return result
 
 
@@ -19,9 +16,6 @@ class PostManager(models.Manager):
         result = self.filter(
             user__id=id_user
         )
-        for r in result:
-            print(r)
-
         return result
 
 

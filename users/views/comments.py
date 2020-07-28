@@ -9,4 +9,4 @@ from users.serializers import comments
 
 
 class CommentAddApiView(CreateAPIView):
-    serializer_class = comments.CommentSerializer
+    serializer_class = comments.CommentAddSerializer
