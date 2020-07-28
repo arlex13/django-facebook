@@ -27,6 +27,7 @@ class MyAvgPostsApiView(ListAPIView):
     serializer_class = post.AvgPostsSerializer
 
     def get_queryset(self):
+
         result = User.objects.filter(
             id=1
         ).aggregate(
