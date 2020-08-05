@@ -20,16 +20,17 @@ class MyPostsApiView(ListAPIView):
     serializer_class = post.MyPostsSerializer
 
     def get_queryset(self):
-        return Post.objects.filter(user_id=1)
+        user_id = self.request.user.id
+        return Post.objects.filter(user_id=user_id)
 
 
 class MyAvgPostsApiView(ListAPIView):
     serializer_class = post.AvgPostsSerializer
 
     def get_queryset(self):
-
+        user_id = self.request.user.id
         result = User.objects.filter(
-            id=1
+            id=user_id
         ).aggregate(
             avg_comment=Avg('user_post__total_comments'),
             avg_like=Avg('user_post__total_reactions')
